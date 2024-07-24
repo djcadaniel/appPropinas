@@ -11,8 +11,13 @@ export type OrderState = {
   tip: number
 }
 
+const localStorageOrder = ():OrderItem[] => {
+  const order = localStorage.getItem('order');
+  return order ? JSON.parse(order) : []
+}
+
 export const initialState: OrderState = {
-  order:[],
+  order:localStorageOrder(),
   tip: 0
 }
 
